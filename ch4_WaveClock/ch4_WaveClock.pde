@@ -53,6 +53,8 @@ void draw() {
   if (_strokeCol < 0) {
     _strokeChange = 1;
   }
-  
+
   stroke(_strokeCol, 60);
+  strokeWeight(1);
+  line(x1, y1, x2, y2);
 }
