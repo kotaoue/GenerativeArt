@@ -1,12 +1,12 @@
 void setup() {
   size(300, 300);
   smooth();
-  background(255);
-  noLoop();
 }
 
 
 void draw() {
+  background(255);
+
   float xstart = random(10);
   float xnoise = xstart;
   float ynoise = random(10);
