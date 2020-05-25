@@ -11,14 +11,18 @@ void draw() {
   float xnoise = xstart;
   float ynoise = random(10);
 
-  for (int y = 0; y <+ height; y+=1) {
-    ynoise += 0.01;
+  for (int y = 0; y <+ height; y+=5) {
+    ynoise += 0.1;
     xnoise = xstart;
-    for (int x = 0; x <= width; x+=1) {
-      xnoise += 0.01;
-      int alph = int(noise(xnoise, ynoise) * 255);
-      stroke(0, alph);
-      line(x, y, x+1, y+1);
+    for (int x = 0; x <= width; x+=5) {
+      xnoise += 0.1;
+      drawPoint(x, y, noise(xnoise, ynoise));
     }
   }
+}
+
+void drawPoint(float x, float y, float noiseFactor) {
+  int alph = int(noiseFactor * 255);
+  stroke(0, alph);
+  line(x, y, x+1, y+1);
 }
