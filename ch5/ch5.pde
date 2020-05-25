@@ -2,6 +2,7 @@ void setup() {
   size(300, 300);
   smooth();
   background(255);
+  noLoop();
 }
 
 
