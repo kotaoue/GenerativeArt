@@ -22,6 +22,10 @@ void draw() {
 }
 
 void drawPoint(float x, float y, float noiseFactor) {
-  float len = 10 * noiseFactor;
-  rect(x, y, len, len);
+  pushMatrix();
+  translate(x, y);
+  rotate(noiseFactor * radians(360));
+  stroke(0, 150);
+  line(0, 0, 20, 0);
+  popMatrix();
 }
