@@ -25,10 +25,10 @@ void draw() {
   xnoise = xstart;
   ynoise = ystart;
 
-  for (int y = 0; y <+ height; y+=5) {
+  for (int y = 0; y <+ height; y+=random(5)) {
     ynoise += 0.1;
     xnoise = xstart;
-    for (int x = 0; x <= width; x+=5) {
+    for (int x = 0; x <= width; x+=3) {
       xnoise += 0.1;
       drawPoint(x, y, noise(xnoise, ynoise));
     }
