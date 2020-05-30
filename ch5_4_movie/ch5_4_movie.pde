@@ -19,8 +19,8 @@ void draw() {
 
   xStartNoise += 0.01;
   yStartNoise += 0.01;
-  float xBlur = 0.5;
-  float yBlur = 0.5;
+  float xBlur = 0.75;
+  float yBlur = 0.75;
   xstart += (noise(xStartNoise) * xBlur) - (xBlur / 2);
   ystart += (noise(yStartNoise) * yBlur) - (yBlur / 2);
 
