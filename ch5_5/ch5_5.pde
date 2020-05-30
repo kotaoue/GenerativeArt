@@ -1,4 +1,6 @@
 import processing.opengl.*;
+int z = 0;
+int zMove = 1;
 
 void setup() {
   // OPENGL is deprecated.
@@ -12,6 +14,8 @@ void setup() {
 void draw() {
   background(255);
 
-  translate(width / 2, height / 2, 100);
+  translate(width / 2, height / 2, z);
+  
+  z = z+zMove;
   sphere(100);
 }
