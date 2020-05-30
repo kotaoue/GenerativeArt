@@ -1,12 +1,14 @@
-float xstart = 0;
-float ystart = 0;
-float xnoise = 0;
-float ynoise = 0;
+float xstart, ystart;
+float xnoise, ynoise;
+float xStartNoise, yStartNoise;
+
 void setup() {
   size(300, 300);
   smooth();
 
   frameRate(24);
+  xStartNoise = random(20);
+  yStartNoise = random(20);
   xstart = random(10);
   ystart = random(10);
 }
@@ -15,9 +17,11 @@ void setup() {
 void draw() {
   background(0);
 
-  xstart += 0.01;
-  ystart += 0.01;
-  
+  xStartNoise += 0.01;
+  yStartNoise += 0.01;
+  xstart += (noise(xStartNoise) * 0.5) - 0.25;
+  ystart += (noise(yStartNoise) * 0.5) - 0.25;
+
   xnoise = xstart;
   ynoise = ystart;
 
