@@ -19,8 +19,10 @@ void draw() {
 
   xStartNoise += 0.01;
   yStartNoise += 0.01;
-  xstart += (noise(xStartNoise) * 0.5) - 0.25;
-  ystart += (noise(yStartNoise) * 0.5) - 0.25;
+  float xBlur = 0.5;
+  float yBlur = 0.5;
+  xstart += (noise(xStartNoise) * xBlur) - (xBlur / 2);
+  ystart += (noise(yStartNoise) * yBlur) - (yBlur / 2);
 
   xnoise = xstart;
   ynoise = ystart;
@@ -28,7 +30,7 @@ void draw() {
   for (int y = 0; y <+ height; y+=random(5)) {
     ynoise += 0.1;
     xnoise = xstart;
-    for (int x = 0; x <= width; x+=3) {
+    for (int x = 0; x <= width; x+=random(5)) {
       xnoise += 0.1;
       drawPoint(x, y, noise(xnoise, ynoise));
     }
