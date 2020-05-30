@@ -5,7 +5,7 @@ void setup() {
   // I must use other library.
   // May be for example "Metal"?
   size(500, 300, OPENGL);
-  sphereDetail(40);
+  sphereDetail(100);
 }
 
 
