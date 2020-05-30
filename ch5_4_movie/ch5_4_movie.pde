@@ -1,15 +1,25 @@
+float xstart = 0;
+float ystart = 0;
+float xnoise = 0;
+float ynoise = 0;
 void setup() {
   size(300, 300);
   smooth();
+
+  frameRate(24);
+  xstart = random(10);
+  ystart = random(10);
 }
 
 
 void draw() {
   background(0);
 
-  float xstart = random(10);
-  float xnoise = xstart;
-  float ynoise = random(10);
+  xstart += 0.01;
+  ystart += 0.01;
+  
+  xnoise = xstart;
+  ynoise = ystart;
 
   for (int y = 0; y <+ height; y+=5) {
     ynoise += 0.1;
