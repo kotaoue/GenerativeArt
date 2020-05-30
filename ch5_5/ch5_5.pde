@@ -12,6 +12,6 @@ void setup() {
 void draw() {
   background(255);
 
-  translate(width / 2, height / 2, 0);
+  translate(width / 2, height / 2, 100);
   sphere(100);
 }
