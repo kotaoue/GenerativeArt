@@ -18,10 +18,10 @@ void draw() {
   xStart += 0.01;
   yStart += 0.01;
 
-  for (int y = 0; y <= height; y+= 2) {
+  for (int y = 0; y <= height; y+= random(8)) {
     yNoise += 0.1;
     xNoise = xStart;
-    for (int x = 0; x <= width; x+= 2) {
+    for (int x = 0; x <= width; x+= random(8)) {
       xNoise += 0.1;
       drawPoint(x, y, noise(xNoise, yNoise));
     }
