@@ -24,6 +24,10 @@ void draw() {
   yStart += 0.01;
   zStart += 0.01;
 
+  translate(150, 20, -150);
+  rotateZ(frameCount * 0.1);
+  rotateY(frameCount * 0.1);
+
   for (int z = 0; z <= sideLength; z+= spacing) {
     zNoise += 0.1;
     yNoise = yStart;
