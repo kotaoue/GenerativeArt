@@ -32,19 +32,17 @@ void draw() {
       xNoise = xStart;
       for (int x = 0; x <= sideLength; x+= spacing) {
         xNoise += 0.1;
-        drawPoint(x, y, noise(xNoise, yNoise));
+        drawPoint(x, y, z, noise(xNoise, yNoise, zNoise));
       }
     }
   }
 }
 
-void drawPoint(float x, float y, float noiseFactor) {
+void drawPoint(float x, float y, float z, float noiseFactor) {
   pushMatrix();
-  translate(x, 250 - y, -y);
-  float sphereSize = noiseFactor * 35;
-  float grey = 150 + (noiseFactor * 120);
-  float alph = 150 + (noiseFactor * 120);
-  fill(grey, alph);
-  sphere(sphereSize);
+  translate(x, y, z);
+  float grey = noiseFactor * 255;
+  fill(grey, 10);
+  sphere(spacing);
   popMatrix();
 }
