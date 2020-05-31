@@ -1,8 +1,7 @@
-import processing.opengl.*;
 float xStart, xNoise, yStart, yNoise;
 
 void setup() {
-  size(500, 300, OPENGL);
+  size(500, 300, P3D);
   background(0);
   sphereDetail(8);
   noStroke();
