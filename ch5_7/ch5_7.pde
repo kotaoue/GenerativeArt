@@ -43,6 +43,6 @@ void drawPoint(float x, float y, float z, float noiseFactor) {
   translate(x, y, z);
   float grey = noiseFactor * 255;
   fill(grey, 10);
-  sphere(spacing);
+  box(spacing, spacing, spacing);
   popMatrix();
 }
