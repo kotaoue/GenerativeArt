@@ -22,7 +22,7 @@ void draw() {
   float lastz = 0;
 
   while (t < 180) {
-    s += 6;
+    s += 36;
     t += 1;
     float radianS = radians(s);
     float radianT = radians(t);
