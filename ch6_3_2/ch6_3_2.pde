@@ -11,6 +11,11 @@ void setup() {
 }
 
 void draw() {
+  background(255);
+  for (int i = 0; i < _circleArr.length; i++) {
+    Circle thisCirc = _circleArr[i];
+    thisCirc.updateMe();
+  }
 }
 
 void mouseReleased() {
