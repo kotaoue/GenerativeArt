@@ -22,7 +22,7 @@ void draw() {
   float lastz = 0;
 
   while (t < 180) {
-    s += 18;
+    s += 6;
     t += 1;
     float radianS = radians(s);
     float radianT = radians(t);
@@ -30,5 +30,13 @@ void draw() {
     float thisx = 0 + (radius * cos(radianS) * sin(radianT));
     float thisy = 0 + (radius * sin(radianS) * sin(radianT));
     float thisz = 0 + (radius * cos(radianT));
+
+    if (lastx != 0) {
+      line(thisx, thisy, thisz, lastx, lasty, lastz);
+    }
+
+    lastx = thisx;
+    lasty = thisy;
+    lastz = thisz;
   }
 }
