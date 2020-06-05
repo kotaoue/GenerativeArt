@@ -51,7 +51,6 @@ class Circle {
   void drawMe() {
     noStroke();
     fill(fillcol, alph);
-    ellipse(x, y, radius * 2, radius * 2);
     stroke(linecol, 150);
     noFill();
     ellipse(x, y, 10, 10);
