@@ -91,7 +91,7 @@ class Circle {
       }
     } else {
       if (alph < 255) {
-        alph++;
+        alph+=5;
       }
     }
 
