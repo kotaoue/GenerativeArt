@@ -1,4 +1,4 @@
-int _numChildren = 4;
+int _numChildren = 3;
 int _maxLevels = 7;
 
 Branch _trunk;
