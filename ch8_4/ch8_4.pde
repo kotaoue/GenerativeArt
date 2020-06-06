@@ -54,6 +54,19 @@ class Branch {
   void updateMe(float ex, float why) {
     x = ex;
     y = why;
+
+    rot += rotChange;
+    if ( rot > 360) {
+      rot = 0;
+    } else if (rot < 0) {
+      rot = 360;
+    }
+
+    len -= lenChange;
+    if ((len < 0) || (len > 200)) {
+      lenChange *= -1;
+    }
+
     endx = x + (level * (random(100) - 50));
     endy = y + 50 + (level * random(50));
   }
