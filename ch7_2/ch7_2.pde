@@ -120,6 +120,6 @@ class Cell {
       fill(floor(255 / (liveCount + 1)));
     }
 
-    circle(x, y, _cellSize);
+    circle(x, y, _cellSize + liveCount);
   }
 }
