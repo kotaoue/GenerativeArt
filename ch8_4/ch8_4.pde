@@ -67,8 +67,13 @@ class Branch {
       lenChange *= -1;
     }
 
-    endx = x + (level * (random(100) - 50));
-    endy = y + 50 + (level * random(50));
+    float radian =radians(rot);
+    endx = x + (len * cos(radian));
+    endy = y + (len * sin(radian));
+
+    for (int i = 0; i < children.length; i ++ ) {
+      children[i].updateMe(endx, endy);
+    }
   }
 
   void drawMe() {
