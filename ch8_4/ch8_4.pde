@@ -20,11 +20,19 @@ class Branch {
   float level, index;
   float x, y;
   float endx, endy;
+  Branch[] children = new Branch[0];
 
   Branch(float lev, float ind, float  ex, float why) {
     level = lev;
     index = ind;
     updateMe(ex, why);
+
+    if (level < _maxLevels) {
+      children = new Branch[_numChildren];
+      for (int i = 0; i < _numChildren; i ++ ) {
+        children[i] = new Branch(level + 1, i, endx, endy);
+      }
+    }
   }
 
   void updateMe(float ex, float why) {
