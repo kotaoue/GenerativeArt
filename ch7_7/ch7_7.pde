@@ -78,14 +78,15 @@ void mouserPressed() {
  --------------------------------------------*/
 class Cell {
   float x, y;
-  int state, nextState;
+  float state, nextState;
+  float lastState = 0;
   Cell[] neighbours;
 
   Cell(float ex, float why) {
     x = ex * _cellSize;
     y = why * _cellSize;
 
-    nextState = (int) (random(2));
+    nextState = ((x / width) + (y / height)) * 14;
     state = nextState;
     neighbours = new Cell[0];
   }
@@ -95,37 +96,36 @@ class Cell {
   }
 
   void calcNextState() {
-    if (state == 0) {
-      int firingCount = 0;
-      for (int i = 0; i < neighbours.length; i++) {
-        if (neighbours[i].state == 1) {
-          firingCount++;
-        }
-      }
-
-      if (firingCount == 2) {
-        nextState =1;
-      } else {
-        nextState = state;
-      }
-    } else if (state == 1) {
-      nextState =2;
-    } else if (state == 2) {
-      nextState =0;
+    float total = 0;
+    for (int i = 0; i < neighbours.length; i++) {
+      total += neighbours[i].state;
     }
+
+    float average = int(total / 8);
+
+    if (average == 255) {
+      nextState = 0;
+    } else if (average == 0) {
+      nextState = 255;
+    } else {
+      if (lastState > 0) {
+        nextState -= lastState;
+      }
+      if (nextState > 255) {
+        nextState = 255;
+      } else if (nextState < 0) {
+        nextState = 0;
+      }
+    }
+
+    lastState = state;
   }
 
   void drawMe() {
     state = nextState;
     stroke(0);
 
-    if (state == 1) {
-      fill(0);
-    } else     if (state == 2) {
-      fill(150);
-    } else {
-      fill(255);
-    }
+    fill(state);
 
     ellipse(x, y, _cellSize, _cellSize);
   }
