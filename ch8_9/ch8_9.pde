@@ -18,7 +18,7 @@ void draw() {
 }
 
 void newTree() {
-  _trunk = new Branch(1, 0, width /2, 50);
+  _trunk = new Branch(1, 0, width /2, height / 2);
   _trunk.drawMe();
 }
 
