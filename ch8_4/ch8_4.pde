@@ -34,7 +34,7 @@ class Branch {
   Branch(float lev, float ind, float  ex, float why) {
     level = lev;
     index = ind;
-    strokeW = (1 / level) * 100;
+    strokeW = (1 / level) * 10;
     alph = 255 / level;
     len = (1 / level) * random(200);
     rot = random(360);
