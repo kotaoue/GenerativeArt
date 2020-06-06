@@ -120,6 +120,7 @@ class Cell {
       fill(floor(255 / (liveCount + 1)));
     }
 
-    circle(x, y, _cellSize + (liveCount * 5));
+    int neighboursEffect = liveCount * 5;
+    circle(x - (neighboursEffect / 2), y  - (neighboursEffect / 2), _cellSize + neighboursEffect);
   }
 }
