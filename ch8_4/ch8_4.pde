@@ -36,7 +36,7 @@ class Branch {
     index = ind;
     strokeW = (1 / level) * 10;
     alph = 255 / level;
-    len = (1 / level) * random(200);
+    len = (1 / level) * random(500);
     rot = random(360);
     lenChange = random(10) - 5;
     rotChange = random(10) - 5;
@@ -63,7 +63,7 @@ class Branch {
     }
 
     len -= lenChange;
-    if ((len < 0) || (len > 200)) {
+    if ((len < 0) || (len > 500)) {
       lenChange *= -1;
     }
 
