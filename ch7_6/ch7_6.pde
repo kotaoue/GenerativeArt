@@ -78,14 +78,14 @@ void mouserPressed() {
  --------------------------------------------*/
 class Cell {
   float x, y;
-  boolean state, nextState;
+  int state, nextState;
   Cell[] neighbours;
 
   Cell(float ex, float why) {
     x = ex * _cellSize;
     y = why * _cellSize;
 
-    nextState = (boolean) (random(2) > 1);
+    nextState = (int) (random(2));
     state = nextState;
     neighbours = new Cell[0];
   }
@@ -95,21 +95,23 @@ class Cell {
   }
 
   void calcNextState() {
-    int liveCount = 0;
-    if (state) {
-      liveCount++;
-    }
-    for (int i = 0; i < neighbours.length; i++) {
-      if (neighbours[i].state) {
-        liveCount++;
+    if (state == 0) {
+      int firingCount = 0;
+      for (int i = 0; i < neighbours.length; i++) {
+        if (neighbours[i].state == 1) {
+          firingCount++;
+        }
       }
-    }
 
-    int halfLine = floor(neighbours.length / 2);
-    nextState = (boolean)(liveCount > halfLine);
-
-    if ((liveCount == halfLine) || (liveCount == halfLine + 1)) {
-      nextState = !nextState;
+      if (firingCount == 2) {
+        nextState =1;
+      } else {
+        nextState = state;
+      }
+    } else if (state == 1) {
+      nextState =2;
+    } else if (state == 2) {
+      nextState =0;
     }
   }
 
@@ -117,8 +119,10 @@ class Cell {
     state = nextState;
     stroke(0);
 
-    if (state == true) {
+    if (state == 1) {
       fill(0);
+    } else     if (state == 2) {
+      fill(150);
     } else {
       fill(255);
     }
