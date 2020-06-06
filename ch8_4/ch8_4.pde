@@ -38,12 +38,18 @@ class Branch {
   void updateMe(float ex, float why) {
     x = ex;
     y = why;
-    endx = x + 150;
-    endy = y + 15;
+    endx = x + (level * (random(100) - 50));
+    endy = y + 50 + (level * random(50));
   }
 
   void drawMe() {
     line(x, y, endx, endy);
     circle(x, y, 5);
+
+    for (int i = 0; i < children.length; i ++ ) {
+      children[i].drawMe();
+    }
+
+    strokeWeight(_maxLevels - level + 1);
   }
 }
