@@ -96,16 +96,20 @@ class Cell {
 
   void calcNextState() {
     int liveCount = 0;
+    if (state) {
+      liveCount++;
+    }
     for (int i = 0; i < neighbours.length; i++) {
       if (neighbours[i].state) {
         liveCount++;
       }
     }
 
-    if (state) {
-      nextState = (boolean)((liveCount == 2) || (liveCount == 3));
-    } else {
-      nextState = (boolean)(liveCount == 3);
+    int halfLine = floor(neighbours.length / 2);
+    nextState = (boolean)(liveCount > halfLine);
+
+    if ((liveCount == halfLine) || (liveCount == halfLine + 1)) {
+      nextState = !nextState;
     }
   }
 
