@@ -95,7 +95,18 @@ class Cell {
   }
 
   void calcNextState() {
-    // to come.
+    int liveCount = 0;
+    for (int i = 0; i < neighbours.length; i++) {
+      if (neighbours[i].state) {
+        liveCount++;
+      }
+    }
+
+    if (state) {
+      nextState = (boolean)((liveCount == 2) || (liveCount == 3));
+    } else {
+      nextState = (boolean)(liveCount == 3);
+    }
   }
 
   void drawMe() {
