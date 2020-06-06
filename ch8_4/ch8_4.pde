@@ -26,11 +26,21 @@ class Branch {
   float level, index;
   float x, y;
   float endx, endy;
+  float strokeW, alph;
+  float len, lenChange;
+  float rot, rotChange;
   Branch[] children = new Branch[0];
 
   Branch(float lev, float ind, float  ex, float why) {
     level = lev;
     index = ind;
+    strokeW = (1 / level) * 100;
+    alph = 255 / level;
+    len = (1 / level) * random(200);
+    rot = random(360);
+    lenChange = random(10) - 5;
+    rotChange = random(10) - 5;
+
     updateMe(ex, why);
 
     if (level < _maxLevels) {
