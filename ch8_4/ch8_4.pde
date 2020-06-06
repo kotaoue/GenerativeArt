@@ -77,12 +77,13 @@ class Branch {
   }
 
   void drawMe() {
-    strokeWeight(strokeW);
-    stroke(0, alph);
-    fill(255, alph);
-    line(x, y, endx, endy);
-    circle(endx, endy, len / 12);
-
+    if (level > 1) {
+      strokeWeight(strokeW);
+      stroke(0, alph);
+      fill(255, alph);
+      line(x, y, endx, endy);
+      circle(endx, endy, len / 12);
+    }
     for (int i = 0; i < children.length; i ++ ) {
       children[i].drawMe();
     }
