@@ -80,6 +80,7 @@ class Cell {
   float x, y;
   boolean state, nextState;
   Cell[] neighbours;
+  int liveCount = 0;
 
   Cell(float ex, float why) {
     x = ex * _cellSize;
@@ -95,7 +96,7 @@ class Cell {
   }
 
   void calcNextState() {
-    int liveCount = 0;
+    liveCount = 0;
     for (int i = 0; i < neighbours.length; i++) {
       if (neighbours[i].state) {
         liveCount++;
@@ -113,10 +114,10 @@ class Cell {
     state = nextState;
     stroke(0);
 
-    if (state == true) {
+    if (state) {
       fill(0);
     } else {
-      fill(255);
+      fill(floor(255 / (liveCount + 1)));
     }
 
     ellipse(x, y, _cellSize, _cellSize);
