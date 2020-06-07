@@ -1,5 +1,5 @@
 FractalRoot pentagon;
-int _maxLevels = 5;
+int _maxLevels = 4;
 float _structFactor = 0.2;
 
 void setup() {
