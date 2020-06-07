@@ -1,5 +1,6 @@
 FractalRoot pentagon;
 int _maxLevels = 5;
+float _structFactor = 0.2;
 
 void setup() {
   size(1000, 1000);
@@ -42,11 +43,14 @@ class FractalRoot {
 class Branch {
   int level, num;
   PointObj[] outerPoints = {};
+  PointObj[] midPoints = {};
 
   Branch(int lev, int n, PointObj[] points) {
     level = lev;
     num = n;
     outerPoints = points;
+
+    midPoints = calcMidPoints();
   }
 
   void drawMe() {
@@ -58,6 +62,12 @@ class Branch {
         nexti = 0;
       }
       line(outerPoints[i].x, outerPoints[i].y, outerPoints[nexti].x, outerPoints[nexti].y);
+    }
+
+    strokeWeight(0.5);
+    fill(255, 150);
+    for (int i = 0; i < midPoints.length; i++) {
+      circle(midPoints[i].x, midPoints[i].y, 15);
     }
   }
 
