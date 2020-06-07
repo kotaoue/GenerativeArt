@@ -1,5 +1,6 @@
 FractalRoot pentagon;
 int _maxLevels = 4;
+int _numSides = 8;
 float _structFactor = 0.2;
 float _structNoise;
 
@@ -27,14 +28,15 @@ class PointObj {
 }
 
 class FractalRoot {
-  PointObj[] pointArr = new PointObj[5];
+  PointObj[] pointArr = {};
   Branch rootBranch;
 
   FractalRoot(float startAngle) {
     float centX = width / 2;
     float centY = height / 2;
     int count = 0;
-    for (int i = 0; i < 360; i+=72) {
+    float angleStep = 360.0f / _numSides;
+    for (int i = 0; i < 360; i+=angleStep) {
       float x = centX + (floor(width * 0.4) * cos(radians(startAngle + i)));
       float y = centY + (floor(height * 0.4) * sin(radians(startAngle + i)));
       pointArr[count] = new PointObj(x, y);
