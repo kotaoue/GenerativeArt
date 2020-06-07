@@ -86,9 +86,7 @@ class Branch {
     strokeWeight(0.5);
     fill(255, 150);
     for (int i = 0; i < midPoints.length; i++) {
-      circle(midPoints[i].x, midPoints[i].y, 15);
       line(midPoints[i].x, midPoints[i].y, projPoints[i].x, projPoints[i].y);
-      circle(projPoints[i].x, projPoints[i].y, 15);
     }
 
     for (int i = 0; i < myBranches.length; i++) {
