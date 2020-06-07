@@ -60,4 +60,36 @@ class Branch {
       line(outerPoints[i].x, outerPoints[i].y, outerPoints[nexti].x, outerPoints[nexti].y);
     }
   }
+
+  PointObj[] calcMidPoints() {
+    PointObj[] mpArray = new PointObj[outerPoints.length];
+    for ( int i = 0; i < outerPoints.length; i++) {
+      int nexti = i + 1;
+      if (nexti == outerPoints.length) {
+        nexti = 0;
+      }
+      PointObj thisMp = calcMidPoint(outerPoints[i], outerPoints[nexti]);
+
+      mpArray[i] = thisMp;
+    }
+
+    return mpArray;
+  }
+
+  PointObj calcMidPoint(PointObj end1, PointObj end2) {
+    float mx, my;
+
+    if (end1.x > end2.x) {
+      mx = end2.x + ((end1.x - end2.x) / 2);
+    } else {
+      mx = end1.x + ((end2.x - end1.x) / 2);
+    }
+    if (end1.y > end2.y) {
+      my = end2.y + ((end1.y - end2.y) / 2);
+    } else {
+      my = end1.y + ((end2.y - end1.y) / 2);
+    }
+
+    return new PointObj(mx, my);
+  }
 }
