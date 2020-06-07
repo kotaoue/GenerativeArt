@@ -44,6 +44,7 @@ class Branch {
   int level, num;
   PointObj[] outerPoints = {};
   PointObj[] midPoints = {};
+  PointObj[] projPoints = {};
 
   Branch(int lev, int n, PointObj[] points) {
     level = lev;
@@ -51,6 +52,7 @@ class Branch {
     outerPoints = points;
 
     midPoints = calcMidPoints();
+    projPoints = calcStructPoints();
   }
 
   void drawMe() {
@@ -68,6 +70,8 @@ class Branch {
     fill(255, 150);
     for (int i = 0; i < midPoints.length; i++) {
       circle(midPoints[i].x, midPoints[i].y, 15);
+      line(midPoints[i].x, midPoints[i].y, projPoints[i].x, projPoints[i].y);
+      circle(projPoints[i].x, projPoints[i].y, 15);
     }
   }
 
