@@ -45,6 +45,7 @@ class Branch {
   PointObj[] outerPoints = {};
   PointObj[] midPoints = {};
   PointObj[] projPoints = {};
+  Branch[] myBranches = {};
 
   Branch(int lev, int n, PointObj[] points) {
     level = lev;
@@ -53,6 +54,11 @@ class Branch {
 
     midPoints = calcMidPoints();
     projPoints = calcStructPoints();
+
+    if ((level + 1) < _maxLevels) {
+      Branch childBranch = new Branch(level + 1, 0, projPoints);
+      myBranches = (Branch[])append(myBranches, childBranch);
+    }
   }
 
   void drawMe() {
@@ -72,6 +78,10 @@ class Branch {
       circle(midPoints[i].x, midPoints[i].y, 15);
       line(midPoints[i].x, midPoints[i].y, projPoints[i].x, projPoints[i].y);
       circle(projPoints[i].x, projPoints[i].y, 15);
+    }
+
+    for (int i = 0; i < myBranches.length; i++) {
+      myBranches[i].drawMe();
     }
   }
 
