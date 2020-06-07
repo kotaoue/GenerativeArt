@@ -102,4 +102,46 @@ class Branch {
 
     return new PointObj(mx, my);
   }
+
+  PointObj[] calcStructPoints() {
+    PointObj[] structArray = new PointObj[midPoints.length];
+    for (int i = 0; i < midPoints.length; i++) {
+      int nexti = i + 3;
+      if (nexti >= midPoints.length) {
+        nexti -= midPoints.length;
+      }
+
+      PointObj thisSP = calcProjPoint(midPoints[i], outerPoints[nexti]);
+      structArray[i] = thisSP;
+    }
+    return structArray;
+  }
+
+  PointObj calcProjPoint(PointObj mp, PointObj op) {
+    float px, py;
+    float adj, opp;
+    if (op.x > mp.x) {
+      opp = op.x - mp.x;
+    } else {
+      opp = mp.x - op.x;
+    }
+    if (op.y > mp.y) {
+      adj = op.y - mp.y;
+    } else {
+      adj = mp.y - op.y;
+    }
+
+    if (op.x > mp.x) {
+      px = mp.x + (opp * _structFactor);
+    } else {
+      px = mp.x - (opp * _structFactor);
+    }
+    if (op.y > mp.y) {
+      py = mp.y + (opp * _structFactor);
+    } else {
+      py = mp.y - (opp * _structFactor);
+    }
+
+    return new PointObj(px, py);
+  }
 }
