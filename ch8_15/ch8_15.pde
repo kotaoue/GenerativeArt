@@ -5,6 +5,10 @@ float _structFactor = 0.2;
 void setup() {
   size(1000, 1000);
   smooth();
+}
+
+void draw() {
+  background(255);
   pentagon = new FractalRoot();
   pentagon.drawShape();
 }
