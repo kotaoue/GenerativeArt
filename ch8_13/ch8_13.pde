@@ -141,9 +141,9 @@ class Branch {
       px = mp.x - (opp * _structFactor);
     }
     if (op.y > mp.y) {
-      py = mp.y + (opp * _structFactor);
+      py = mp.y + (adj * _structFactor);
     } else {
-      py = mp.y - (opp * _structFactor);
+      py = mp.y - (adj * _structFactor);
     }
 
     return new PointObj(px, py);
