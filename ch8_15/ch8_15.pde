@@ -12,7 +12,7 @@ void draw() {
   background(255);
 
   _structNoise += 0.01;
-  _structFactor = noise(_structNoise) * 2;
+  _structFactor = (noise(_structNoise) * 3) - 1;
 
   pentagon = new FractalRoot(frameCount);
   pentagon.drawShape();
