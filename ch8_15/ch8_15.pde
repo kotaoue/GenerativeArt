@@ -4,7 +4,7 @@ float _structFactor = 0.2;
 float _structNoise;
 
 void setup() {
-  size(1000, 1000);
+  size(600, 600);
   smooth();
 }
 
@@ -35,8 +35,8 @@ class FractalRoot {
     float centY = height / 2;
     int count = 0;
     for (int i = 0; i < 360; i+=72) {
-      float x = centX + (400 * cos(radians(startAngle + i)));
-      float y = centY + (400 * sin(radians(startAngle + i)));
+      float x = centX + (floor(width * 0.4) * cos(radians(startAngle + i)));
+      float y = centY + (floor(height * 0.4) * sin(radians(startAngle + i)));
       pointArr[count] = new PointObj(x, y);
       count++;
     }
