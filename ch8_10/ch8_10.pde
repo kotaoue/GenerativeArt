@@ -58,6 +58,17 @@ class Branch {
     if ((level + 1) < _maxLevels) {
       Branch childBranch = new Branch(level + 1, 0, projPoints);
       myBranches = (Branch[])append(myBranches, childBranch);
+      for (int i = 0; i < outerPoints.length; i++) {
+        int nexti = i - 1;
+
+        if (nexti < 0) {
+          nexti += outerPoints.length;
+        }
+        PointObj[] newPoints = {projPoints[i], midPoints[i], outerPoints[nexti], projPoints[nexti]};
+
+        childBranch = new Branch(level + 1, i + 1, newPoints);
+        myBranches = (Branch[])append(myBranches, childBranch);
+      }
     }
   }
 
