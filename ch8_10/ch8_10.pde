@@ -64,7 +64,7 @@ class Branch {
         if (nexti < 0) {
           nexti += outerPoints.length;
         }
-        PointObj[] newPoints = {projPoints[i], midPoints[i], outerPoints[nexti], projPoints[nexti]};
+        PointObj[] newPoints = {projPoints[i], midPoints[i], outerPoints[i], midPoints[nexti], projPoints[nexti]};
 
         childBranch = new Branch(level + 1, i + 1, newPoints);
         myBranches = (Branch[])append(myBranches, childBranch);
