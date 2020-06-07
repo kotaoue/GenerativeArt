@@ -1,4 +1,4 @@
-FractalRoot pentagon;
+FractalRoot fractalRoot;
 int _maxLevels = 4;
 int _numSides = 8;
 float _structFactor = 0.2;
@@ -15,8 +15,8 @@ void draw() {
   _structNoise += 0.01;
   _structFactor = (noise(_structNoise) * 3) - 1;
 
-  pentagon = new FractalRoot(frameCount);
-  pentagon.drawShape();
+  fractalRoot = new FractalRoot(frameCount);
+  fractalRoot.drawShape();
 }
 
 class PointObj {
@@ -34,13 +34,11 @@ class FractalRoot {
   FractalRoot(float startAngle) {
     float centX = width / 2;
     float centY = height / 2;
-    int count = 0;
     float angleStep = 360.0f / _numSides;
     for (int i = 0; i < 360; i+=angleStep) {
       float x = centX + (floor(width * 0.4) * cos(radians(startAngle + i)));
       float y = centY + (floor(height * 0.4) * sin(radians(startAngle + i)));
-      pointArr[count] = new PointObj(x, y);
-      count++;
+      pointArr = (PointObj[])append(pointArr, new PointObj(x, y));
     }
 
     rootBranch = new Branch(0, 0, pointArr);
