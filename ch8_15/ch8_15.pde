@@ -1,6 +1,7 @@
 FractalRoot pentagon;
 int _maxLevels = 4;
 float _structFactor = 0.2;
+float _structNoise;
 
 void setup() {
   size(1000, 1000);
@@ -9,6 +10,9 @@ void setup() {
 
 void draw() {
   background(255);
+  
+  _structNoise += 0.01;
+  
   pentagon = new FractalRoot();
   pentagon.drawShape();
 }
